@@ -1,24 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Video Player View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="VideoPlayerViewController" customModule="VideoPlayer_" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZSj-my-Ak4">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="204"/>
+                                <subviews>
+                                    <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c2K-Rh-bBP">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="204"/>
+                                        <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <wkWebViewConfiguration key="configuration">
+                                            <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                            <wkPreferences key="preferences"/>
+                                        </wkWebViewConfiguration>
+                                    </wkWebView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="c2K-Rh-bBP" secondAttribute="trailing" id="FeQ-dd-pfm"/>
+                                    <constraint firstAttribute="bottom" secondItem="c2K-Rh-bBP" secondAttribute="bottom" id="JWl-f9-m0B"/>
+                                    <constraint firstItem="c2K-Rh-bBP" firstAttribute="top" secondItem="ZSj-my-Ak4" secondAttribute="top" id="MIP-A1-enT"/>
+                                    <constraint firstItem="c2K-Rh-bBP" firstAttribute="leading" secondItem="ZSj-my-Ak4" secondAttribute="leading" id="SER-7C-mAI"/>
+                                    <constraint firstAttribute="width" secondItem="ZSj-my-Ak4" secondAttribute="height" multiplier="125:68" id="abR-XG-CuN"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2EX-Oe-jVI">
+                                <rect key="frame" x="0.0" y="205" width="375" height="447"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2Fm-OT-L0n">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="460"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="460" id="tGa-H4-ymx"/>
+                                        </constraints>
+                                        <color key="separatorColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="BYZ-38-t0r" id="hch-4a-rMD"/>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="Xyx-pS-sW4"/>
+                                        </connections>
+                                    </tableView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="2Fm-OT-L0n" secondAttribute="trailing" id="1Za-s9-3ir"/>
+                                    <constraint firstItem="2Fm-OT-L0n" firstAttribute="leading" secondItem="2EX-Oe-jVI" secondAttribute="leading" id="QzH-yj-8z8"/>
+                                    <constraint firstAttribute="bottom" secondItem="2Fm-OT-L0n" secondAttribute="bottom" constant="-13" id="fFi-fb-yzS"/>
+                                    <constraint firstItem="2Fm-OT-L0n" firstAttribute="top" secondItem="2EX-Oe-jVI" secondAttribute="top" id="gRp-pn-ryF"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="ZSj-my-Ak4" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="2kC-Tq-Obp"/>
+                            <constraint firstItem="2EX-Oe-jVI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="BS3-pJ-ZEc"/>
+                            <constraint firstItem="ZSj-my-Ak4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Fyq-XU-kKg"/>
+                            <constraint firstItem="2EX-Oe-jVI" firstAttribute="top" secondItem="ZSj-my-Ak4" secondAttribute="bottom" constant="1" id="MwU-EJ-CQj"/>
+                            <constraint firstItem="ZSj-my-Ak4" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="QSD-hT-c2i"/>
+                            <constraint firstItem="2EX-Oe-jVI" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="X4C-vQ-d6K"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="customVideoPlayer" destination="ZSj-my-Ak4" id="ZvU-kP-qDW"/>
+                        <outlet property="playlistView" destination="2Fm-OT-L0n" id="UC5-7h-bNN"/>
+                        <outlet property="webview" destination="c2K-Rh-bBP" id="NdX-uu-5zu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="138.40000000000001" y="99.400299850074973"/>
         </scene>
     </scenes>
 </document>
